@@ -7,7 +7,7 @@ A plugin for adding prefetch dns to Vite for personal use!
 - [x] 忽略特定域名
 - [x] 添加pre-connect域名
 - [x] 继承prettier格式化输出index.html
-- [x] 限制最大prefetch次数
+- [x] 添加最大限制prefetch-dns的个数（按照使用次数排序从多到少）
 
 ```typescript
 interface DnsPluginOption {
@@ -23,6 +23,10 @@ interface DnsPluginOption {
    * @description: prettier 配置
    */
   prettier?: Omit<Options, "parser">;
+  /**
+   * @description: 最大prefetch-dns次数
+   */
+  limit?: number;
 }
 ```
 `DnsPluginOption.prettier` see [prettier Doc](https://prettier.io/docs/en/options)

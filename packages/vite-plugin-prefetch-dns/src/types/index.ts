@@ -14,7 +14,7 @@ export interface DnsPluginOption {
    */
   prettier?: Omit<Options, 'parser'>;
   /**
-   * @description: prettier 配置
+   * @description: 限制最大prefetch次数
    */
   limit?: number;
 }

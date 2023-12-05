@@ -23,6 +23,10 @@ interface DnsPluginOption {
    * @description: prettier 配置
    */
   prettier?: Omit<Options, "parser">;
+  /**
+   * @description: 最大prefetch-dns次数
+   */
+  limit?: number;
 }
 ```
 `DnsPluginOption.prettier` see [prettier Doc](https://prettier.io/docs/en/options)
