@@ -1,12 +1,28 @@
 {
   "name": "vite-plugin-prefetch-dns",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A vite plugin to auto add dns-prefetch link tag",
   "type": "module",
-  "main": "dist/index.js",
-  "homepage": "",
+  "main": "dist/index.cjs",
+  "homepage": "https://github.com/GodlessLiu/vite-plugin-prefetch-dns",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GodlessLiu/vite-plugin-prefetch-dns.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/GodlessLiu/vite-plugin-prefetch-dns/issues"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "unbuild && pnpm run patch-cjs",
     "build:watch": "tsc -w"
   },
   "keywords": [
@@ -15,9 +31,18 @@
     "prefetch",
     "dns-prefetch"
   ],
+  "peerDependencies": {
+    "vite": "^4.4.5"
+  },
   "author": "Hilary Liu<2788370451@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "tsup": "^8.0.1",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.11",
+    "prettier": "^3.1.0",
+    "url-regex": "^5.0.0"
   }
 }
