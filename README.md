@@ -7,7 +7,7 @@ A plugin for adding prefetch dns to Vite for personal use!
 - [x] 忽略特定域名
 - [x] 添加pre-connect域名
 - [x] 继承prettier格式化输出index.html
-
+- [x] 限制最大prefetch次数
 
 ```typescript
 interface DnsPluginOption {

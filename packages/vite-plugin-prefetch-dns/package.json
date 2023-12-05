@@ -12,7 +12,8 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "bugs": {
@@ -22,8 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild && pnpm run patch-cjs",
-    "build:watch": "tsc -w"
+    "build": "tsup"
   },
   "keywords": [
     "vite",
