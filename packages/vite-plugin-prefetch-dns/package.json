@@ -1,0 +1,23 @@
+{
+  "name": "vite-plugin-prefetch-dns",
+  "version": "0.0.1",
+  "description": "A vite plugin to auto add dns-prefetch link tag",
+  "type": "module",
+  "main": "dist/index.js",
+  "homepage": "",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "prefetch",
+    "dns-prefetch"
+  ],
+  "author": "Hilary Liu<2788370451@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^4.4.5"
+  }
+}
