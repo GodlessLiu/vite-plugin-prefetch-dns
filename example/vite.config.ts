@@ -10,6 +10,9 @@ export default defineConfig({
     Inspect(),
     vitePrefetchDns({
       preConnects: ['https://www.baidu.com'],
+      ignores: ['https://vitejs.dev'],
+      limit: 2,
+      threshold: 3,
       prettier: {
         insertPragma: true,
         printWidth: 80,
