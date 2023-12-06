@@ -1,5 +1,6 @@
+import { DefineFilter } from 'src/core/filter/defineFilter';
 import { DnsPluginOption, Domains } from 'src/types';
-import { HTMLElement } from 'node-html-parser';
+
 export function transformUrl2Domain(url: string) {
   const domain = url.match(/(https?:\/\/[^/]*)/g);
   return domain || [];
@@ -20,28 +21,12 @@ export function addDomain(domains: Domains, urls: string[]): Domains {
   return domains;
 }
 
-export function limitByDesc(domains: Domains, options: DnsPluginOption = {}) {
-  if (!options.limit) return domains;
-  return domains.sort((a, b) => b.num - a.num).slice(0, options.limit);
-}
-
-export function appendDomain2Head(
+export function filterProcess(
   domains: Domains,
-  head: HTMLElement | null,
-  options: DnsPluginOption = {}
+  options: DnsPluginOption,
+  ...args: DefineFilter[]
 ) {
-  const { ignores, preConnects = [] } = options;
-  if (!head) return;
-  domains.forEach((domain) => {
-    if (ignores?.length && ignores.includes(domain.url)) return;
-    const link = `<link rel="dns-prefetch" href="${domain.url}">`;
-    head.insertAdjacentHTML('afterbegin', link);
-  });
-
-  if (preConnects?.length) {
-    preConnects.forEach((d) => {
-      const link = `<link rel="preconnect" href="${d}">`;
-      head.insertAdjacentHTML('afterbegin', link);
-    });
-  }
+  return args.reduce((domains, fn) => {
+    return fn(domains, options);
+  }, domains);
 }

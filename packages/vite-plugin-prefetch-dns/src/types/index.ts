@@ -17,6 +17,10 @@ export interface DnsPluginOption {
    * @description: 限制最大prefetch次数
    */
   limit?: number;
+  /**
+   * @description: 阈值
+   */
+  threshold?: number;
 }
 export interface Domain {
   url: string;

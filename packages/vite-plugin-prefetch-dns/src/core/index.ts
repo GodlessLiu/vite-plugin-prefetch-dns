@@ -3,12 +3,9 @@ import urlRegex from 'url-regex';
 import { parse } from 'node-html-parser';
 import { format } from 'prettier';
 import { DnsPluginOption, Domains } from 'src/types';
-import {
-  addDomain,
-  appendDomain2Head,
-  limitByDesc,
-  transformUrl2Domain,
-} from 'src/core/utils';
+import { addDomain, filterProcess, transformUrl2Domain } from 'src/core/utils';
+import Filter from './filter';
+import { appendDomain2Head, appendPreload2Head } from 'src/core/head/useHead';
 
 export default function vitePrefetchDns(options: DnsPluginOption = {}): Plugin {
   let domains: Domains = [];
@@ -28,8 +25,18 @@ export default function vitePrefetchDns(options: DnsPluginOption = {}): Plugin {
     transformIndexHtml(html) {
       const root = parse(html);
       const head = root.querySelector('head');
-      domains = limitByDesc(domains, options);
-      appendDomain2Head(domains, head, options);
+      console.log(domains);
+      domains = filterProcess(
+        domains,
+        options,
+        Filter.thresholdFilter,
+        Filter.ignoreFilter,
+        Filter.sortFilter,
+        Filter.limitFilter
+      );
+      console.log(domains);
+      appendDomain2Head(domains, head);
+      appendPreload2Head(head, options);
       // 去掉parser的配置
       const htmlStr = format(root.toString(), {
         parser: 'html',
