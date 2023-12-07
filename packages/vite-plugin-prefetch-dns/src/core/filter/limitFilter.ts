@@ -6,4 +6,5 @@ function limitByDesc(domains: Domains, options: DnsPluginOption = {}) {
   return domains.slice(0, options.limit);
 }
 const limitFilter = defineFilter(limitByDesc);
+
 export default limitFilter;

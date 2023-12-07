@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-prefetch-dns",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "A vite plugin to auto add dns-prefetch link tag",
   "type": "module",
   "main": "dist/index.cjs",
@@ -23,7 +23,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "up": "npm run build && npm publish --registry https://registry.npmjs.org"
   },
   "keywords": [
     "vite",

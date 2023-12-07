@@ -8,6 +8,5 @@ export default defineConfig({
   sourcemap: true,
   format: ['cjs', 'esm'],
   clean: true,
-  watch: true,
   minify: true,
 });
